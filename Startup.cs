@@ -25,7 +25,7 @@ namespace Commander
             services.AddDbContext<CommanderContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
 
-            services.AddControllers().AddNewtonsoftJson(opt => 
+            services.AddControllers().AddNewtonsoftJson(opt =>
                 opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ICommanderRepository, SqlCommanderRepository>();
@@ -41,8 +41,6 @@ namespace Commander
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
